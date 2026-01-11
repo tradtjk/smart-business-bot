@@ -12,14 +12,14 @@ load_dotenv()
 class Config:
     """Main configuration class"""
     
-    # Bot settings
+    # Bot settings - Debug ALL env vars
+    print("=== ALL ENVIRONMENT VARIABLES ===")
+    for key, value in os.environ.items():
+        print(f"  {key}={value[:20] if len(value) > 20 else value}")
+    print("=================================")
+    
     TOKEN = os.getenv('TOKEN') or os.getenv('BOT_TOKEN')
     if not TOKEN:
-        # Debug: print all env vars
-        print("Available environment variables:")
-        for key in os.environ:
-            if 'TOKEN' in key.upper() or 'ADMIN' in key.upper():
-                print(f"  {key}={os.environ[key][:10]}...")
         raise ValueError("TOKEN environment variable is required")
     
     # Admin settings
