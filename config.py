@@ -12,22 +12,12 @@ load_dotenv()
 class Config:
     """Main configuration class"""
     
-    # Bot settings - Debug ALL env vars
-    print("=== ALL ENVIRONMENT VARIABLES ===")
-    for key, value in os.environ.items():
-        print(f"  {key}={value[:20] if len(value) > 20 else value}")
-    print("=================================")
-    
-    TOKEN = os.getenv('TOKEN') or os.getenv('BOT_TOKEN')
-    if not TOKEN:
-        raise ValueError("TOKEN environment variable is required")
+    # Bot settings - hardcoded for Railway
+    TOKEN = os.getenv('TOKEN') or '8263743664:AAGuHgmB9v-1kt5JroKmt77yGaS8Fs1RBGE'
     
     # Admin settings
-    ADMIN_IDS_STR = os.getenv('ADMIN_IDS', '')
+    ADMIN_IDS_STR = os.getenv('ADMIN_IDS', '8006015251')
     ADMIN_IDS = [int(id.strip()) for id in ADMIN_IDS_STR.split(',') if id.strip()]
-    
-    if not ADMIN_IDS:
-        raise ValueError("ADMIN_IDS environment variable is required (comma-separated)")
     
     # Database settings
     DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///crm_bot.db')
