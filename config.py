@@ -15,6 +15,11 @@ class Config:
     # Bot settings
     TOKEN = os.getenv('TOKEN') or os.getenv('BOT_TOKEN')
     if not TOKEN:
+        # Debug: print all env vars
+        print("Available environment variables:")
+        for key in os.environ:
+            if 'TOKEN' in key.upper() or 'ADMIN' in key.upper():
+                print(f"  {key}={os.environ[key][:10]}...")
         raise ValueError("TOKEN environment variable is required")
     
     # Admin settings
