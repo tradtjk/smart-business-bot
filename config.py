@@ -13,7 +13,7 @@ class Config:
     """Main configuration class"""
     
     # Bot settings
-    TOKEN = os.getenv('TOKEN')
+    TOKEN = os.getenv('TOKEN') or os.getenv('BOT_TOKEN')
     if not TOKEN:
         raise ValueError("TOKEN environment variable is required")
     
